@@ -9,7 +9,6 @@ import os
 
 
 
-
 base_path = os.path.dirname(__file__)
 heart_path = os.path.join(base_path, "Heart.csv")
 credit_path = os.path.join(base_path, "Credit.csv")
@@ -92,3 +91,10 @@ plt.ylabel("Balance")
 plt.colorbar(label="Cluster Label")
 plt.legend()
 plt.show()
+
+
+heart_silhouette = silhouette_score(heart_data_scaled, kmeans_heart.labels_)
+credit_silhouette = silhouette_score(credit_data_scaled, kmeans_credit.labels_)
+
+print(f"Average Silhouette Score for Heart Dataset: {heart_silhouette:.3f}")
+print(f"Average Silhouette Score for Credit Dataset: {credit_silhouette:.3f}")
